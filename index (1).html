@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MozzyPlum — Chibi Art &amp; Twitch Emote Commissions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Silkscreen&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #3A1030;
+    --bg-soft: #4A1740;
+    --card: #FFF7FB;
+    --card-dim: #F5E6EF;
+    --ink: #FCEFF7;
+    --ink-dim: #D8AFC9;
+    --ink-on-card: #3A1030;
+    --ink-on-card-dim: #7A4B69;
+    --outline: #26081F;
+    --magenta: #E5478F;
+    --magenta-deep: #B72E70;
+    --mint: #7FC9A0;
+    --mint-deep: #4E9A72;
+    --font-head: 'Baloo 2', sans-serif;
+    --font-body: 'Nunito', sans-serif;
+    --font-pixel: 'Silkscreen', monospace;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(76px + env(safe-area-inset-top, 0px)); }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 8% 4%, rgba(229,71,143,0.16), transparent 32%),
+      radial-gradient(circle at 92% 18%, rgba(127,201,160,0.12), transparent 36%);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 26px; }
+
+  /* NAV */
+  header.site {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(58,16,48,0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--outline);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 26px; max-width: 1080px; margin: 0 auto;
+  }
+  .nav .wordmark {
+    font-family: var(--font-head); font-weight: 700; font-size: 1.3rem;
+    color: var(--ink); display: flex; align-items: center; gap: 8px;
+  }
+  .nav .wordmark .dot { color: var(--magenta); }
+  .nav ul { list-style: none; display: flex; gap: 26px; margin: 0; padding: 0; }
+  .nav a { text-decoration: none; font-size: 0.94rem; font-weight: 700; color: var(--ink-dim); transition: color 0.15s ease; }
+  .nav a:hover, .nav a:focus-visible { color: var(--mint); }
+
+  /* PIXEL TAG */
+  .pixel-tag {
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+    color: var(--mint);
+    background: rgba(127,201,160,0.14);
+    border: 1px solid rgba(127,201,160,0.4);
+    padding: 5px 10px;
+    display: inline-block;
+    border-radius: 6px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 84px 26px 64px; max-width: 1080px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center;
+  }
+  .hero .pixel-tag { margin-bottom: 18px; }
+  .hero h1 {
+    font-family: var(--font-head); font-weight: 700; font-size: clamp(2.1rem, 4.6vw, 3.1rem);
+    line-height: 1.14; margin: 0 0 18px; color: var(--ink);
+  }
+  .hero h1 .accent { color: var(--magenta); }
+  .hero p.lede { color: var(--ink-dim); font-size: 1.08rem; max-width: 42ch; margin: 0 0 30px; }
+  .hero .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px;
+    border-radius: 999px; font-size: 0.96rem; font-weight: 800; text-decoration: none;
+    border: 2px solid var(--outline); cursor: pointer; font-family: var(--font-body);
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+  .btn:active { transform: translateY(2px); }
+  .btn-primary { background: var(--magenta); color: #fff; box-shadow: 3px 3px 0 var(--outline); }
+  .btn-primary:hover { filter: brightness(1.08); }
+  .btn-ghost { background: var(--card); color: var(--ink-on-card); box-shadow: 3px 3px 0 var(--outline); }
+  .btn-ghost:hover { filter: brightness(0.97); }
+
+  .hero-art { position: relative; display: flex; justify-content: center; }
+  .hero-art .frame {
+    width: min(380px, 100%);
+    background: var(--card);
+    border: 3px solid var(--outline);
+    border-radius: 28px;
+    padding: 14px;
+    box-shadow: 8px 8px 0 var(--magenta-deep);
+  }
+  .hero-art img { border-radius: 18px; }
+  .hero-art .cap {
+    display: flex; justify-content: space-between; margin-top: 10px;
+    font-size: 0.76rem; color: var(--ink-on-card-dim); font-weight: 700;
+  }
+
+  /* SECTIONS */
+  section { padding: 80px 0; border-top: 2px dashed rgba(216,175,201,0.25); }
+  section.first-section { border-top: none; }
+  .section-head { margin-bottom: 40px; }
+  .section-head .pixel-tag { margin-bottom: 14px; }
+  .section-head h2 {
+    font-family: var(--font-head); font-weight: 700; font-size: clamp(1.7rem, 3vw, 2.2rem);
+    margin: 0 0 10px; color: var(--ink);
+  }
+  .section-head p { color: var(--ink-dim); max-width: 52ch; margin: 0; font-size: 0.99rem; }
+
+  /* GALLERY */
+  .gallery-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  }
+  .emote-tile {
+    background: var(--card); border: 3px solid var(--outline); border-radius: 20px;
+    padding: 12px; box-shadow: 5px 5px 0 var(--outline); aspect-ratio: 1; display: flex; flex-direction: column;
+  }
+  .emote-tile .art-wrap { flex: 1; border-radius: 12px; overflow: hidden; background: var(--card-dim); display: flex; align-items: center; justify-content: center; }
+  .emote-tile img { width: 100%; height: 100%; object-fit: contain; }
+  .emote-tile .label { margin-top: 8px; font-size: 0.76rem; font-weight: 800; color: var(--ink-on-card); text-align: center; }
+  .emote-tile.placeholder { box-shadow: none; border-style: dashed; border-color: rgba(216,175,201,0.5); background: rgba(255,247,251,0.06); }
+  .emote-tile.placeholder .art-wrap { background: transparent; }
+  .emote-tile.placeholder .label { color: var(--ink-dim); font-weight: 700; }
+  .placeholder-glyph { font-size: 1.8rem; color: var(--ink-dim); opacity: 0.6; }
+
+  .gallery-note {
+    margin-top: 26px; font-size: 0.85rem; color: var(--ink-dim);
+    border-left: 3px solid var(--mint); padding-left: 14px;
+  }
+
+  /* PROCESS */
+  .process-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .process-list li {
+    background: var(--card); border: 3px solid var(--outline); border-radius: 18px;
+    padding: 20px 18px; box-shadow: 4px 4px 0 var(--outline); color: var(--ink-on-card);
+  }
+  .process-list .n {
+    font-family: var(--font-head); color: var(--magenta); font-size: 1.3rem; font-weight: 800; display: block; margin-bottom: 8px;
+  }
+  .process-list h3 { font-family: var(--font-head); font-size: 1.02rem; font-weight: 700; margin: 0 0 6px; }
+  .process-list p { color: var(--ink-on-card-dim); font-size: 0.88rem; margin: 0; }
+
+  /* PRICING */
+  .pricing-card {
+    background: var(--card); border: 3px solid var(--outline); border-radius: 22px;
+    padding: 30px; box-shadow: 6px 6px 0 var(--magenta-deep); color: var(--ink-on-card);
+  }
+  .price-hero { display: flex; align-items: baseline; gap: 12px; margin-bottom: 22px; flex-wrap: wrap; }
+  .price-hero .big { font-family: var(--font-head); font-size: 2.6rem; font-weight: 800; color: var(--magenta); }
+  .price-hero .unit { font-size: 1rem; color: var(--ink-on-card-dim); font-weight: 700; }
+  .price-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .price-list li {
+    display: flex; justify-content: space-between; gap: 16px; padding: 12px 0;
+    border-bottom: 1px solid rgba(58,16,48,0.1); font-size: 0.94rem;
+  }
+  .price-list li:last-child { border-bottom: none; }
+  .price-list .item { font-weight: 700; }
+  .price-list .val { color: var(--magenta-deep); font-weight: 800; white-space: nowrap; }
+  .price-list .note { display: block; font-weight: 400; color: var(--ink-on-card-dim); font-size: 0.82rem; margin-top: 2px; }
+
+  /* TERMS */
+  .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .term-card {
+    background: var(--card); border: 3px solid var(--outline); border-radius: 18px;
+    padding: 22px 24px; box-shadow: 4px 4px 0 var(--outline); color: var(--ink-on-card);
+  }
+  .term-card h3 {
+    font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; margin: 0 0 10px;
+    display: flex; align-items: center; gap: 8px; color: var(--magenta-deep);
+  }
+  .term-card ul { margin: 0; padding-left: 18px; color: var(--ink-on-card); font-size: 0.88rem; }
+  .term-card li { margin-bottom: 8px; }
+  .term-card li:last-child { margin-bottom: 0; }
+  .term-card p { margin: 0; font-size: 0.88rem; }
+
+  /* FORM */
+  .commission-form {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px;
+    background: var(--card); border: 3px solid var(--outline); border-radius: 22px;
+    padding: 34px; box-shadow: 6px 6px 0 var(--mint-deep); color: var(--ink-on-card);
+  }
+  .field { display: flex; flex-direction: column; gap: 7px; }
+  .field.full { grid-column: 1 / -1; }
+  .field label { font-size: 0.85rem; font-weight: 700; color: var(--ink-on-card-dim); }
+  .field input, .field select, .field textarea {
+    background: #fff; border: 2px solid rgba(58,16,48,0.18); color: var(--ink-on-card);
+    padding: 11px 13px; font-family: var(--font-body); font-size: 0.95rem; border-radius: 10px;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--magenta); }
+  .field textarea { resize: vertical; min-height: 100px; }
+  .field.checkbox { flex-direction: row; align-items: flex-start; gap: 10px; }
+  .field.checkbox input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--magenta); }
+  .field.checkbox label { font-weight: 600; color: var(--ink-on-card); font-size: 0.86rem; }
+  .field.checkbox a { color: var(--magenta-deep); font-weight: 800; text-decoration: underline; }
+  .form-foot {
+    grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 14px; margin-top: 4px;
+  }
+  .form-foot .hint { font-size: 0.8rem; color: var(--ink-on-card-dim); max-width: 38ch; }
+
+  /* FOOTER */
+  footer.site { border-top: 2px solid var(--outline); padding: 40px 0 calc(40px + env(safe-area-inset-bottom, 0px)); }
+  .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-row .wordmark { font-family: var(--font-head); font-weight: 700; color: var(--ink); }
+  .socials { display: flex; gap: 18px; list-style: none; padding: 0; margin: 0; }
+  .socials a { font-size: 0.9rem; font-weight: 700; color: var(--ink-dim); text-decoration: none; }
+  .socials a:hover { color: var(--mint); }
+  .copyright { color: var(--ink-dim); font-size: 0.78rem; margin-top: 20px; }
+
+  @media (max-width: 880px) {
+    .hero { grid-template-columns: 1fr; padding-top: 52px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-list { grid-template-columns: 1fr 1fr; }
+    .terms-grid { grid-template-columns: 1fr; }
+    .commission-form { grid-template-columns: 1fr; padding: 24px; }
+    .nav ul { gap: 16px; }
+  }
+  @media (max-width: 560px) {
+    .process-list { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .nav ul { display: none; }
+    .price-hero .big { font-size: 2.1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <div class="wordmark">MozzyPlum<span class="dot">.</span></div>
+    <ul>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#terms">Terms</a></li>
+      <li><a href="#commission">Commission</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="hero first-section">
+    <div>
+      <span class="pixel-tag">CHIBI · EMOTES · TWITCH</span>
+      <h1>Cute chibi art &amp; Twitch emotes with a little <span class="accent">extra sparkle.</span></h1>
+      <p class="lede">Hi, I'm MozzyPlum! I draw cutesy chibi commissions and custom emotes for streamers, in punchy magenta-leaning colors. Take a look at recent pieces below, or jump straight to the request form.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#commission">Commission an emote</a>
+        <a class="btn btn-ghost" href="#gallery">See the gallery</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="frame">
+        <img src="images/wave1.png" alt="Chibi character with pink hair and a horn, waving hello">
+        <div class="cap"><span>Wave1</span><span>Personal piece</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="pixel-tag">GALLERY</span>
+        <h2>Recent pieces</h2>
+        <p>A growing set of chibis and emotes. More slots below are open for upcoming commissions and personal pieces — check back soon.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="emote-tile">
+          <div class="art-wrap"><img src="images/wave1.png" alt="Chibi character waving, pink and magenta color palette"></div>
+          <div class="label">Wave1</div>
+        </div>
+        <div class="emote-tile">
+          <div class="art-wrap"><img src="images/momobox.png" alt="Chibi dragon character peeking out of a cardboard box"></div>
+          <div class="label">MomoBox</div>
+        </div>
+        <div class="emote-tile placeholder"><div class="art-wrap"><span class="placeholder-glyph">✦</span></div><div class="label">Open slot</div></div>
+        <div class="emote-tile placeholder"><div class="art-wrap"><span class="placeholder-glyph">✦</span></div><div class="label">Open slot</div></div>
+        <div class="emote-tile placeholder"><div class="art-wrap"><span class="placeholder-glyph">✦</span></div><div class="label">Open slot</div></div>
+        <div class="emote-tile placeholder"><div class="art-wrap"><span class="placeholder-glyph">✦</span></div><div class="label">Open slot</div></div>
+        <div class="emote-tile placeholder"><div class="art-wrap"><span class="placeholder-glyph">✦</span></div><div class="label">Open slot</div></div>
+        <div class="emote-tile placeholder"><div class="art-wrap"><span class="placeholder-glyph">✦</span></div><div class="label">Open slot</div></div>
+      </div>
+      <p class="gallery-note">Send more finished pieces any time and I'll drop them straight into these tiles.</p>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="pixel-tag">PROCESS</span>
+        <h2>How a commission works</h2>
+        <p>Four steps from request to delivered emote.</p>
+      </div>
+      <ul class="process-list">
+        <li><span class="n">1</span><h3>Send a request</h3><p>Tell me your character, how many emotes, and any references.</p></li>
+        <li><span class="n">2</span><h3>Sketch &amp; quote</h3><p>You'll see a rough sketch and confirmed price before final art starts.</p></li>
+        <li><span class="n">3</span><h3>Revisions</h3><p>2 minor revisions are included once the sketch is approved.</p></li>
+        <li><span class="n">4</span><h3>Delivery</h3><p>Final files sent once payment is complete, ready to upload.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="pixel-tag">PRICING</span>
+        <h2>Simple, flat pricing</h2>
+        <p>One rate per emote, plus clear add-ons for revisions and rush jobs.</p>
+      </div>
+      <div class="pricing-card">
+        <div class="price-hero"><span class="big">$25</span><span class="unit">flat, per emote · ~2 week turnaround</span></div>
+        <ul class="price-list">
+          <li><span class="item">Included revisions<span class="note">Minor tweaks that don't change a major part of the piece</span></span><span class="val">2 free</span></li>
+          <li><span class="item">Extra minor revision<span class="note">Beyond the 2 included</span></span><span class="val">$5–10</span></li>
+          <li><span class="item">Major revision<span class="note">Changes a significant part of the piece — priced by weight</span></span><span class="val">$5–10</span></li>
+          <li><span class="item">Rush order<span class="note">Delivery in under 1 week</span></span><span class="val">+$10</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="terms">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="pixel-tag">TERMS</span>
+        <h2>Terms &amp; conditions</h2>
+        <p>Please read before sending a request — you'll confirm you've read these when you submit the form.</p>
+      </div>
+      <div class="terms-grid">
+        <div class="term-card">
+          <h3>💳 Payment</h3>
+          <ul>
+            <li>PayPal is the only accepted payment method.</li>
+            <li>Partial payment (50% or less of the total) is available only for full illustrations priced above $50, due once the draft is approved.</li>
+          </ul>
+        </div>
+        <div class="term-card">
+          <h3>📦 Delivery</h3>
+          <ul>
+            <li>Finished pieces are sent via social platforms once payment is complete.</li>
+            <li>Delivery by email is available on request.</li>
+          </ul>
+        </div>
+        <div class="term-card">
+          <h3>↩️ Refunds</h3>
+          <ul>
+            <li>No refunds once a commission is completed at the customer's request.</li>
+            <li>If a piece is left incomplete, a partial refund of 50% of the original price may be requested with valid reason.</li>
+          </ul>
+        </div>
+        <div class="term-card">
+          <h3>© Copyright</h3>
+          <ul>
+            <li>Commissioned art may not be used commercially, reproduced, modified, or redistributed without prior written permission.</li>
+            <li>Any public use, online or offline, must credit the artist as Mozzy Plum Arts.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="commission">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="pixel-tag">COMMISSION</span>
+        <h2>Request a commission</h2>
+        <p>Fill this out with as much detail as you can. Submitting opens a pre-filled email in your mail app, ready to send.</p>
+      </div>
+      <form class="commission-form" id="commission-form">
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="handle">Discord / Twitch handle (optional)</label>
+          <input id="handle" name="handle" type="text" placeholder="so I can reach you there too">
+        </div>
+        <div class="field">
+          <label for="count">Number of emotes</label>
+          <input id="count" name="count" type="text" placeholder="e.g. 3">
+        </div>
+        <div class="field">
+          <label for="turnaround">Turnaround</label>
+          <select id="turnaround" name="turnaround">
+            <option>Standard — 2 weeks</option>
+            <option>Rush — under 1 week (+$10)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="budget">Estimated budget</label>
+          <input id="budget" name="budget" type="text" placeholder="based on $25/emote + extras">
+        </div>
+        <div class="field full">
+          <label for="details">Describe your character &amp; emotes</label>
+          <textarea id="details" name="details" placeholder="Character look, expressions/poses wanted, style notes, mood"></textarea>
+        </div>
+        <div class="field full">
+          <label for="refs">Reference links</label>
+          <input id="refs" name="refs" type="text" placeholder="Character sheets, mood boards, existing emotes, etc.">
+        </div>
+        <div class="field full checkbox">
+          <input id="agree" name="agree" type="checkbox" required>
+          <label for="agree">I've read and agree to the <a href="#terms">terms &amp; conditions</a>, including the PayPal-only payment and refund policy.</label>
+        </div>
+        <div class="form-foot">
+          <span class="hint">This form has no server behind it yet — sending opens a pre-filled email instead.</span>
+          <button type="submit" class="btn btn-primary">Send request</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="wordmark">Mozzy Plum Arts</div>
+      <ul class="socials">
+        <li><a href="https://www.twitch.tv/mozzyplum" target="_blank" rel="noopener">Twitch</a></li>
+        <li><a href="https://x.com/Mozzy_Plum" target="_blank" rel="noopener">Twitter / X</a></li>
+        <li><a href="https://www.instagram.com/mozzyplum/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="mailto:Inlovewiththeloneliness@gmail.com">Inlovewiththeloneliness@gmail.com</a></li>
+      </ul>
+    </div>
+    <p class="copyright">© 2026 Mozzy Plum Arts. All artwork on this site is original and may not be reproduced, modified, or used commercially without permission.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('commission-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const f = new FormData(this);
+    const subject = encodeURIComponent(`Emote commission request — ${f.get('count') || '?'} emote(s)`);
+    const body = encodeURIComponent(
+`Name: ${f.get('name')}
+Email: ${f.get('email')}
+Discord/Twitch: ${f.get('handle') || 'n/a'}
+Number of emotes: ${f.get('count') || 'n/a'}
+Turnaround: ${f.get('turnaround')}
+Estimated budget: ${f.get('budget') || 'n/a'}
+
+Details:
+${f.get('details') || ''}
+
+References:
+${f.get('refs') || ''}
+
+Agreed to terms & conditions: ${f.get('agree') ? 'Yes' : 'No'}`
+    );
+    window.location.href = `mailto:Inlovewiththeloneliness@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
+
+</body>
+</html>
