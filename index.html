@@ -333,23 +333,90 @@
     </div>
     <div class="masonry-gallery" id="gallery-grid">
       <div class="piece-tile" data-category="emote">
-        <img src="Portfolio%20Emotes/wave1.png" alt="Chibi character with pink hair and a horn, waving hello">
+        <img src="Portfolio%20Emotes/wave1.png" alt="Wave1 emote">
         <div class="label">Wave1</div>
       </div>
       <div class="piece-tile" data-category="emote">
-        <img src="Portfolio%20Emotes/momobox.png" alt="Chibi dragon character peeking out of a cardboard box">
+        <img src="Portfolio%20Emotes/momobox.png" alt="MomoBox emote">
         <div class="label">MomoBox</div>
       </div>
-      <div class="piece-tile placeholder" data-category="banner" style="aspect-ratio:3/1;">
-        <span class="placeholder-glyph">✦</span><div class="label">Banner slot</div>
+      <div class="piece-tile" data-category="emote">
+        <img src="Portfolio%20Emotes/2Raembarrassed.png" alt="Embarrassed Emote">
+        <div class="label">Embarrassed Emote</div>
       </div>
-      <div class="piece-tile placeholder" data-category="illustration" style="aspect-ratio:3/4;">
-        <span class="placeholder-glyph">✦</span><div class="label">Illustration slot</div>
+      <div class="piece-tile" data-category="emote">
+        <img src="Portfolio%20Emotes/dandespair.png" alt="Cry Emote">
+        <div class="label">Cry Emote</div>
+      </div>
+      <div class="piece-tile" data-category="emote">
+        <img src="Portfolio%20Emotes/danhype.png" alt="Hype Emote">
+        <div class="label">Hype Emote</div>
+      </div>
+      <div class="piece-tile" data-category="emote">
+        <img src="Portfolio%20Emotes/Momopat2.png" alt="Pat Emote">
+        <div class="label">Pat Emote</div>
+      </div>
+      <div class="piece-tile" data-category="emote">
+        <img src="Portfolio%20Emotes/momoraid.png" alt="Raid Emote">
+        <div class="label">Raid Emote</div>
+      </div>
+      <div class="piece-tile" data-category="emote">
+        <img src="Portfolio%20Emotes/momoheart.png" alt="Heart Emote">
+        <div class="label">Heart Emote</div>
+      </div>
+      <div class="piece-tile" data-category="emote">
+        <img src="Portfolio%20Emotes/momoban.png" alt="Ban Emote">
+        <div class="label">Ban Emote</div>
+      </div>
+      <div class="piece-tile" data-category="banner">
+        <img src="Portfolio%20Emotes/Computer_Specs.png" alt="Specs Banner">
+        <div class="label">Specs Banner</div>
+      </div>
+      <div class="piece-tile" data-category="banner">
+        <img src="Portfolio%20Emotes/Discord.png" alt="Discord Banner">
+        <div class="label">Discord Banner</div>
+      </div>
+      <div class="piece-tile" data-category="illustration">
+        <img src="Portfolio%20Emotes/Mizu.png" alt="Pixel Art Character Study">
+        <div class="label">Pixel Art Character Study</div>
+      </div>
+      <div class="piece-tile" data-category="illustration">
+        <img src="Portfolio%20Emotes/Geyes.png" alt="Eyes told Stories">
+        <div class="label">Eyes told Stories</div>
+      </div>
+      <div class="piece-tile" data-category="illustration">
+        <img src="Portfolio%20Emotes/SharpGurl.png" alt="Experimenting with Sharper corners">
+        <div class="label">Experimenting with Sharper corners</div>
+      </div>
+      <div class="piece-tile" data-category="illustration">
+        <img src="Portfolio%20Emotes/sybauu.png" alt="Applying previous learnings in portrait art">
+        <div class="label">Applying previous learnings in portrait art</div>
+      </div>
+      <div class="piece-tile" data-category="illustration">
+        <img src="Portfolio%20Emotes/valentines.png" alt="Simple Cute Style">
+        <div class="label">Simple Cute Style</div>
+      </div>
+      <div class="piece-tile" data-category="illustration">
+        <img src="Portfolio%20Emotes/shibainu.png" alt="Earlier Commission done Involving Animal + Half-body">
+        <div class="label">Earlier Commission done Involving Animal + Half-body</div>
       </div>
     </div>
-    <p class="gallery-note">Send more finished pieces any time — banners and illustrations keep their natural shape instead of being cropped square.</p>
+    <p class="gallery-note">More pieces added regularly — check back for updates.</p>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('#gallery-grid .piece-tile').forEach(tile => {
+        tile.style.display = (filter === 'all' || tile.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
 
 <script>
   document.querySelectorAll('.filter-btn').forEach(btn => {
