@@ -7,7 +7,40 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Silkscreen&display=swap" rel="stylesheet">
+
+
+  
 <style>
+
+  /* MASONRY GALLERY WITH CATEGORY FILTERS */
+  .filter-row { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+  .filter-btn {
+    font-family: var(--font-body); font-weight: 800; font-size: 0.85rem;
+    padding: 9px 18px; border-radius: 999px; border: 2px solid var(--outline);
+    background: var(--card); color: var(--ink-on-card); cursor: pointer;
+  }
+  .filter-btn.active { background: var(--magenta); color: #fff; }
+  .masonry-gallery { columns: 4 200px; column-gap: 18px; }
+  .masonry-gallery .piece-tile {
+    break-inside: avoid; margin-bottom: 18px; background: var(--card);
+    border: 3px solid var(--outline); border-radius: 20px; padding: 12px;
+    box-shadow: 5px 5px 0 var(--outline);
+  }
+  .masonry-gallery .piece-tile img { width: 100%; border-radius: 12px; display: block; }
+  .masonry-gallery .piece-tile .label {
+    margin-top: 8px; font-size: 0.78rem; font-weight: 800;
+    color: var(--ink-on-card); text-align: center;
+  }
+  .masonry-gallery .piece-tile.placeholder {
+    box-shadow: none; border-style: dashed; border-color: rgba(216,175,201,0.5);
+    background: rgba(255,247,251,0.06); display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .masonry-gallery .piece-tile.placeholder .placeholder-glyph { font-size: 1.6rem; color: var(--ink-dim); opacity: 0.6; }
+  .masonry-gallery .piece-tile.placeholder .label { color: var(--ink-dim); font-weight: 700; }
+  @media (max-width: 880px) { .masonry-gallery { columns: 3 160px; } }
+  @media (max-width: 560px) { .masonry-gallery { columns: 2 130px; } }
+
+  
   :root {
     --bg: #3A1030;
     --bg-soft: #4A1740;
@@ -285,32 +318,51 @@
     </div>
   </section>
 
-  <section id="gallery">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="pixel-tag">GALLERY</span>
-        <h2>Recent pieces</h2>
-        <p>A growing set of chibis and emotes. More slots below are open for upcoming commissions and personal pieces — check back soon.</p>
-      </div>
-      <div class="gallery-grid">
-        <div class="emote-tile">
-          <div class="art-wrap"><img src="Portfolio%20Emotes/wave1.png" alt="Chibi character waving, pink and magenta color palette"></div>
-          <div class="label">Wave</div>
-        </div>
-        <div class="emote-tile">
-          <div class="art-wrap"><img src="Portfolio%20Emotes/momobox.png" alt="Chibi dragon character peeking out of a cardboard box"></div>
-          <div class="label">Box Emote</div>
-        </div>
-        <div class="emote-tile"> <div class="art-wrap"><img src="Portfolio%20Emotes/2Raembarrassed.png" alt="Rae is Shy"></div> <div class="label">Embarrased Emote</div> </div>
-        <div class="emote-tile"> <div class="art-wrap"><img src="Portfolio%20Emotes/Danhype.png" alt="Hype Emote"></div> <div class="label">Hype Emote</div> </div>
-        <div class="emote-tile"> <div class="art-wrap"><img src="Portfolio%20Emotes/Momopat2.png" alt="Momo getting pats"></div> <div class="label">Pat Emote</div> </div>
-        <div class="emote-tile"> <div class="art-wrap"><img src="Portfolio%20Emotes/dandespair.png" alt="Dan crying"></div> <div class="label">Cry Emote</div> </div>
-        <div class="emote-tile"> <div class="art-wrap"><img src="Portfolio%20Emotes/momoraid.png" alt="Momo is Raiding"></div> <div class="label">Raid Emote</div> </div>
-        
-      </div>
-      <p class="gallery-note">Other emotes and pieces I can not share online.</p>
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="pixel-tag">GALLERY</span>
+      <h2>Recent pieces</h2>
+      <p>Emotes, banners, and illustrations. Filter by type, or browse everything.</p>
     </div>
-  </section>
+    <div class="filter-row">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="emote">Emotes</button>
+      <button class="filter-btn" data-filter="banner">Banners</button>
+      <button class="filter-btn" data-filter="illustration">Illustrations</button>
+    </div>
+    <div class="masonry-gallery" id="gallery-grid">
+      <div class="piece-tile" data-category="emote">
+        <img src="Portfolio%20Emotes/wave1.png" alt="Chibi character with pink hair and a horn, waving hello">
+        <div class="label">Wave1</div>
+      </div>
+      <div class="piece-tile" data-category="emote">
+        <img src="Portfolio%20Emotes/momobox.png" alt="Chibi dragon character peeking out of a cardboard box">
+        <div class="label">MomoBox</div>
+      </div>
+      <div class="piece-tile placeholder" data-category="banner" style="aspect-ratio:3/1;">
+        <span class="placeholder-glyph">✦</span><div class="label">Banner slot</div>
+      </div>
+      <div class="piece-tile placeholder" data-category="illustration" style="aspect-ratio:3/4;">
+        <span class="placeholder-glyph">✦</span><div class="label">Illustration slot</div>
+      </div>
+    </div>
+    <p class="gallery-note">Send more finished pieces any time — banners and illustrations keep their natural shape instead of being cropped square.</p>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('#gallery-grid .piece-tile').forEach(tile => {
+        tile.style.display = (filter === 'all' || tile.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
 
   <section id="process">
     <div class="wrap">
