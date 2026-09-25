@@ -7,40 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Silkscreen&display=swap" rel="stylesheet">
-
-
-  
 <style>
-
-  /* MASONRY GALLERY WITH CATEGORY FILTERS */
-  .filter-row { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
-  .filter-btn {
-    font-family: var(--font-body); font-weight: 800; font-size: 0.85rem;
-    padding: 9px 18px; border-radius: 999px; border: 2px solid var(--outline);
-    background: var(--card); color: var(--ink-on-card); cursor: pointer;
-  }
-  .filter-btn.active { background: var(--magenta); color: #fff; }
-  .masonry-gallery { columns: 4 200px; column-gap: 18px; }
-  .masonry-gallery .piece-tile {
-    break-inside: avoid; margin-bottom: 18px; background: var(--card);
-    border: 3px solid var(--outline); border-radius: 20px; padding: 12px;
-    box-shadow: 5px 5px 0 var(--outline);
-  }
-  .masonry-gallery .piece-tile img { width: 100%; border-radius: 12px; display: block; }
-  .masonry-gallery .piece-tile .label {
-    margin-top: 8px; font-size: 0.78rem; font-weight: 800;
-    color: var(--ink-on-card); text-align: center;
-  }
-  .masonry-gallery .piece-tile.placeholder {
-    box-shadow: none; border-style: dashed; border-color: rgba(216,175,201,0.5);
-    background: rgba(255,247,251,0.06); display: flex; flex-direction: column; align-items: center; justify-content: center;
-  }
-  .masonry-gallery .piece-tile.placeholder .placeholder-glyph { font-size: 1.6rem; color: var(--ink-dim); opacity: 0.6; }
-  .masonry-gallery .piece-tile.placeholder .label { color: var(--ink-dim); font-weight: 700; }
-  @media (max-width: 880px) { .masonry-gallery { columns: 3 160px; } }
-  @media (max-width: 560px) { .masonry-gallery { columns: 2 130px; } }
-
-  
   :root {
     --bg: #3A1030;
     --bg-soft: #4A1740;
@@ -186,6 +153,34 @@
     border-left: 3px solid var(--mint); padding-left: 14px;
   }
 
+  /* MASONRY GALLERY WITH CATEGORY FILTERS */
+  .filter-row { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+  .filter-btn {
+    font-family: var(--font-body); font-weight: 800; font-size: 0.85rem;
+    padding: 9px 18px; border-radius: 999px; border: 2px solid var(--outline);
+    background: var(--card); color: var(--ink-on-card); cursor: pointer;
+  }
+  .filter-btn.active { background: var(--magenta); color: #fff; }
+  .masonry-gallery { columns: 4 200px; column-gap: 18px; }
+  .masonry-gallery .piece-tile {
+    break-inside: avoid; margin-bottom: 18px; background: var(--card);
+    border: 3px solid var(--outline); border-radius: 20px; padding: 12px;
+    box-shadow: 5px 5px 0 var(--outline);
+  }
+  .masonry-gallery .piece-tile img { width: 100%; border-radius: 12px; display: block; }
+  .masonry-gallery .piece-tile .label {
+    margin-top: 8px; font-size: 0.78rem; font-weight: 800;
+    color: var(--ink-on-card); text-align: center;
+  }
+  .masonry-gallery .piece-tile.placeholder {
+    box-shadow: none; border-style: dashed; border-color: rgba(216,175,201,0.5);
+    background: rgba(255,247,251,0.06); display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .masonry-gallery .piece-tile.placeholder .placeholder-glyph { font-size: 1.6rem; color: var(--ink-dim); opacity: 0.6; }
+  .masonry-gallery .piece-tile.placeholder .label { color: var(--ink-dim); font-weight: 700; }
+  @media (max-width: 880px) { .masonry-gallery { columns: 3 160px; } }
+  @media (max-width: 560px) { .masonry-gallery { columns: 2 130px; } }
+
   /* PROCESS */
   .process-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
   .process-list li {
@@ -197,6 +192,32 @@
   }
   .process-list h3 { font-family: var(--font-head); font-size: 1.02rem; font-weight: 700; margin: 0 0 6px; }
   .process-list p { color: var(--ink-on-card-dim); font-size: 0.88rem; margin: 0; }
+
+  /* ABOUT */
+  .about-card {
+    background: var(--card); border: 3px solid var(--outline); border-radius: 22px;
+    padding: 32px; box-shadow: 6px 6px 0 var(--outline); color: var(--ink-on-card);
+  }
+  .about-card p { font-size: 1rem; margin: 0 0 20px; }
+  .about-stats { display: flex; gap: 14px; flex-wrap: wrap; }
+  .about-stat {
+    background: var(--card-dim); border-radius: 14px; padding: 10px 18px;
+    font-weight: 700; font-size: 0.82rem; color: var(--ink-on-card-dim);
+  }
+  .about-stat strong {
+    color: var(--magenta-deep); display: block; font-family: var(--font-head); font-size: 1.15rem;
+  }
+
+  /* PRICING TIERS */
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 20px; }
+  .tier-card {
+    background: var(--card); border: 3px solid var(--outline); border-radius: 20px;
+    padding: 24px; box-shadow: 5px 5px 0 var(--outline); color: var(--ink-on-card);
+  }
+  .tier-card .tier-price { font-family: var(--font-head); font-size: 1.9rem; font-weight: 800; color: var(--magenta); }
+  .tier-card .tier-unit { display: block; font-size: 0.78rem; color: var(--ink-on-card-dim); font-weight: 700; margin-top: 4px; }
+  .tier-card h3 { font-family: var(--font-head); font-size: 1.08rem; margin: 12px 0 6px; }
+  .tier-card p.tier-desc { font-size: 0.85rem; color: var(--ink-on-card-dim); margin: 0; }
 
   /* PRICING */
   .pricing-card {
@@ -271,6 +292,7 @@
     .process-list { grid-template-columns: 1fr 1fr; }
     .terms-grid { grid-template-columns: 1fr; }
     .commission-form { grid-template-columns: 1fr; padding: 24px; }
+    .pricing-grid { grid-template-columns: 1fr 1fr; }
     .nav ul { gap: 16px; }
   }
   @media (max-width: 560px) {
@@ -278,6 +300,7 @@
     .gallery-grid { grid-template-columns: 1fr 1fr; }
     .nav ul { display: none; }
     .price-hero .big { font-size: 2.1rem; }
+    .pricing-grid { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -291,10 +314,10 @@
   <div class="nav">
     <div class="wordmark">MozzyPlum<span class="dot">.</span></div>
     <ul>
+      <li><a href="#about">About</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#terms">Terms</a></li>
-      <li><a href="#commission">Commission</a></li>
     </ul>
   </div>
 </header>
@@ -302,134 +325,125 @@
 <main>
   <section class="hero first-section">
     <div>
-      <span class="pixel-tag">CHIBI · EMOTES · TWITCH</span>
-      <h1>Cute chibi art &amp; Twitch emotes with a little <span class="accent">extra sparkle.</span></h1>
-      <p class="lede">Hi, I'm MozzyPlum! I draw cutesy chibi commissions and custom emotes for streamers, in punchy magenta-leaning colors. Take a look at recent pieces below, or jump straight to the request form.</p>
+      <span class="pixel-tag">CHIBI · EMOTES · BANNERS</span>
+      <h1>Cute Chibi Art, Twitch Emotes, Banners, and <span class="accent">Learning more!</span></h1>
+      <p class="lede">Hi, I'm MozzyPlum! I draw cutesy chibi art and custom pieces in punchy magenta-leaning colors. Take a look at recent work below, or scroll down to see how commissions work.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#commission">Commission an emote</a>
-        <a class="btn btn-ghost" href="#gallery">See the gallery</a>
+        <a class="btn btn-primary" href="#gallery">See the gallery</a>
+        <a class="btn btn-ghost" href="#pricing">Pricing &amp; terms</a>
       </div>
     </div>
     <div class="hero-art">
       <div class="frame">
         <img src="Portfolio%20Emotes/wave1.png" alt="Chibi character with pink hair and a horn, waving hello">
-        <div class="cap"><span>Hello!</span><span>Name's Mozzy</span></div>
+        <div class="cap"><span>Wave1</span><span>Personal piece</span></div>
       </div>
     </div>
   </section>
 
-<section id="gallery">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="pixel-tag">GALLERY</span>
-      <h2>Recent pieces</h2>
-      <p>Emotes, banners, and illustrations. Filter by type, or browse everything.</p>
-    </div>
-    <div class="filter-row">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="emote">Emotes</button>
-      <button class="filter-btn" data-filter="banner">Banners</button>
-      <button class="filter-btn" data-filter="illustration">Illustrations</button>
-    </div>
-    <div class="masonry-gallery" id="gallery-grid">
-      <div class="piece-tile" data-category="emote">
-        <img src="Portfolio%20Emotes/wave1.png" alt="Wave1 emote">
-        <div class="label">Wave1</div>
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="pixel-tag">ABOUT</span>
+        <h2>Hi, I'm MozzyPlum ^-^/</h2>
+        <p>A little about the artist behind the art.</p>
       </div>
-      <div class="piece-tile" data-category="emote">
-        <img src="Portfolio%20Emotes/momobox.png" alt="MomoBox emote">
-        <div class="label">MomoBox</div>
-      </div>
-      <div class="piece-tile" data-category="emote">
-        <img src="Portfolio%20Emotes/2Raembarrassed.png" alt="Embarrassed Emote">
-        <div class="label">Embarrassed Emote</div>
-      </div>
-      <div class="piece-tile" data-category="emote">
-        <img src="Portfolio%20Emotes/dandespair.png" alt="Cry Emote">
-        <div class="label">Cry Emote</div>
-      </div>
-      <div class="piece-tile" data-category="emote">
-        <img src="Portfolio%20Emotes/Danhype.png" alt="Hype Emote">
-        <div class="label">Hype Emote</div>
-      </div>
-      <div class="piece-tile" data-category="emote">
-        <img src="Portfolio%20Emotes/Momopat2.png" alt="Pat Emote">
-        <div class="label">Pat Emote</div>
-      </div>
-      <div class="piece-tile" data-category="emote">
-        <img src="Portfolio%20Emotes/momoraid.png" alt="Raid Emote">
-        <div class="label">Raid Emote</div>
-      </div>
-      <div class="piece-tile" data-category="emote">
-        <img src="Portfolio%20Emotes/momoheart.png" alt="Heart Emote">
-        <div class="label">Heart Emote</div>
-      </div>
-      <div class="piece-tile" data-category="emote">
-        <img src="Portfolio%20Emotes/momoban.png" alt="Ban Emote">
-        <div class="label">Ban Emote</div>
-      </div>
-      <div class="piece-tile" data-category="banner">
-        <img src="Portfolio%20Emotes/Computer_Specs.png" alt="Specs Banner">
-        <div class="label">Specs Banner</div>
-      </div>
-      <div class="piece-tile" data-category="banner">
-        <img src="Portfolio%20Emotes/Discord.png" alt="Discord Banner">
-        <div class="label">Discord Banner</div>
-      </div>
-      <div class="piece-tile" data-category="illustration">
-        <img src="Portfolio%20Emotes/Mizu.png" alt="Pixel Art Character Study">
-        <div class="label">Pixel Art Character Study</div>
-      </div>
-      <div class="piece-tile" data-category="illustration">
-        <img src="Portfolio%20Emotes/Geyes.png" alt="Eyes told Stories">
-        <div class="label">Eyes told Stories</div>
-      </div>
-      <div class="piece-tile" data-category="illustration">
-        <img src="Portfolio%20Emotes/SharpGurl.png" alt="Experimenting with Sharper corners">
-        <div class="label">Experimenting with Sharper corners</div>
-      </div>
-      <div class="piece-tile" data-category="illustration">
-        <img src="Portfolio%20Emotes/sybauu.png" alt="Applying previous learnings in portrait art">
-        <div class="label">Applying previous learnings in portrait art</div>
-      </div>
-      <div class="piece-tile" data-category="illustration">
-        <img src="Portfolio%20Emotes/valentines.png" alt="Simple Cute Style">
-        <div class="label">Simple Cute Style</div>
-      </div>
-      <div class="piece-tile" data-category="illustration">
-        <img src="Portfolio%20Emotes/shibainu.png" alt="Earlier Commission done Involving Animal + Half-body">
-        <div class="label">Earlier Commission done Involving Animal + Half-body</div>
+      <div class="about-card">
+        <p>Others call me Rae, or just Mozzy. I started digital drawing around 2019, and have been developing emotes since 2022 — still learning and adding new styles as I go!</p>
+        <div class="about-stats">
+          <div class="about-stat"><strong>2019</strong>Digital art</div>
+          <div class="about-stat"><strong>2022</strong>Emotes</div>
+        </div>
       </div>
     </div>
-    <p class="gallery-note">More pieces added regularly — check back for updates.</p>
-  </div>
-</section>
+  </section>
 
-<script>
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('#gallery-grid .piece-tile').forEach(tile => {
-        tile.style.display = (filter === 'all' || tile.dataset.category === filter) ? '' : 'none';
-      });
-    });
-  });
-</script>
-
-<script>
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('#gallery-grid .piece-tile').forEach(tile => {
-        tile.style.display = (filter === 'all' || tile.dataset.category === filter) ? '' : 'none';
-      });
-    });
-  });
-</script>
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="pixel-tag">GALLERY</span>
+        <h2>Recent pieces</h2>
+        <p>Emotes, banners, and illustrations. Filter by type, or browse everything.</p>
+      </div>
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="emote">Emotes</button>
+        <button class="filter-btn" data-filter="banner">Banners</button>
+        <button class="filter-btn" data-filter="illustration">Illustrations</button>
+      </div>
+      <div class="masonry-gallery" id="gallery-grid">
+        <div class="piece-tile" data-category="emote">
+          <img src="Portfolio%20Emotes/wave1.png" alt="Wave1 emote">
+          <div class="label">Wave1</div>
+        </div>
+        <div class="piece-tile" data-category="emote">
+          <img src="Portfolio%20Emotes/momobox.png" alt="MomoBox emote">
+          <div class="label">MomoBox</div>
+        </div>
+        <div class="piece-tile" data-category="emote">
+          <img src="Portfolio%20Emotes/2Raembarrassed.png" alt="Embarrassed Emote">
+          <div class="label">Embarrassed Emote</div>
+        </div>
+        <div class="piece-tile" data-category="emote">
+          <img src="Portfolio%20Emotes/dandespair.png" alt="Cry Emote">
+          <div class="label">Cry Emote</div>
+        </div>
+        <div class="piece-tile" data-category="emote">
+          <img src="Portfolio%20Emotes/danhype.png" alt="Hype Emote">
+          <div class="label">Hype Emote</div>
+        </div>
+        <div class="piece-tile" data-category="emote">
+          <img src="Portfolio%20Emotes/Momopat2.png" alt="Pat Emote">
+          <div class="label">Pat Emote</div>
+        </div>
+        <div class="piece-tile" data-category="emote">
+          <img src="Portfolio%20Emotes/momoraid.png" alt="Raid Emote">
+          <div class="label">Raid Emote</div>
+        </div>
+        <div class="piece-tile" data-category="emote">
+          <img src="Portfolio%20Emotes/momoheart.png" alt="Heart Emote">
+          <div class="label">Heart Emote</div>
+        </div>
+        <div class="piece-tile" data-category="emote">
+          <img src="Portfolio%20Emotes/momoban.png" alt="Ban Emote">
+          <div class="label">Ban Emote</div>
+        </div>
+        <div class="piece-tile" data-category="banner">
+          <img src="Portfolio%20Emotes/Computer_Specs.png" alt="Specs Banner">
+          <div class="label">Specs Banner</div>
+        </div>
+        <div class="piece-tile" data-category="banner">
+          <img src="Portfolio%20Emotes/Discord.png" alt="Discord Banner">
+          <div class="label">Discord Banner</div>
+        </div>
+        <div class="piece-tile" data-category="illustration">
+          <img src="Portfolio%20Emotes/Mizu.png" alt="Pixel Art Character Study">
+          <div class="label">Pixel Art Character Study</div>
+        </div>
+        <div class="piece-tile" data-category="illustration">
+          <img src="Portfolio%20Emotes/Geyes.png" alt="Eyes told Stories">
+          <div class="label">Eyes told Stories</div>
+        </div>
+        <div class="piece-tile" data-category="illustration">
+          <img src="Portfolio%20Emotes/SharpGurl.png" alt="Experimenting with Sharper corners">
+          <div class="label">Experimenting with Sharper corners</div>
+        </div>
+        <div class="piece-tile" data-category="illustration">
+          <img src="Portfolio%20Emotes/sybauu.png" alt="Applying previous learnings in portrait art">
+          <div class="label">Applying previous learnings in portrait art</div>
+        </div>
+        <div class="piece-tile" data-category="illustration">
+          <img src="Portfolio%20Emotes/valentines.png" alt="Simple Cute Style">
+          <div class="label">Simple Cute Style</div>
+        </div>
+        <div class="piece-tile" data-category="illustration">
+          <img src="Portfolio%20Emotes/shibainu.png" alt="Earlier Commission done Involving Animal + Half-body">
+          <div class="label">Earlier Commission done Involving Animal + Half-body</div>
+        </div>
+      </div>
+      <p class="gallery-note">More pieces added regularly — check back for updates.</p>
+    </div>
+  </section>
 
   <section id="process">
     <div class="wrap">
@@ -451,11 +465,27 @@
     <div class="wrap">
       <div class="section-head">
         <span class="pixel-tag">PRICING</span>
-        <h2>Simple, flat pricing</h2>
-        <p>One rate per emote, plus clear add-ons for revisions and rush jobs.</p>
+        <h2>Simple, clear pricing</h2>
+        <p>Flat rates by type, plus shared add-ons for revisions and rush jobs.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="tier-card">
+          <span class="tier-price">$25</span><span class="tier-unit">flat · per emote</span>
+          <h3>Emotes</h3>
+          <p class="tier-desc">~2 week turnaround. 2 free minor revisions included.</p>
+        </div>
+        <div class="tier-card">
+          <span class="tier-price">$35</span><span class="tier-unit">flat · per banner</span>
+          <h3>Banners</h3>
+          <p class="tier-desc">Stream/profile banners, sized to your platform.</p>
+        </div>
+        <div class="tier-card">
+          <span class="tier-price">$60–100</span><span class="tier-unit">depends on complexity</span>
+          <h3>Illustrations</h3>
+          <p class="tier-desc">Full pieces — price depends on characters, detail, and background.</p>
+        </div>
       </div>
       <div class="pricing-card">
-        <div class="price-hero"><span class="big">$25</span><span class="unit">flat, per emote · ~2 week turnaround</span></div>
         <ul class="price-list">
           <li><span class="item">Included revisions<span class="note">Minor tweaks that don't change a major part of the piece</span></span><span class="val">2 free</span></li>
           <li><span class="item">Extra minor revision<span class="note">Beyond the 2 included</span></span><span class="val">$5–10</span></li>
@@ -463,6 +493,7 @@
           <li><span class="item">Rush order<span class="note">Delivery in under 1 week</span></span><span class="val">+$10</span></li>
         </ul>
       </div>
+      <p class="gallery-note">Commissioning something outside this list? Just DM me — I take on work outside my usual scope too.</p>
     </div>
   </section>
 
@@ -471,13 +502,13 @@
       <div class="section-head">
         <span class="pixel-tag">TERMS</span>
         <h2>Terms &amp; conditions</h2>
-        <p>Please read before sending a request — you'll confirm you've read these when you submit the form.</p>
+        <p>Please read through before reaching out for a commission.</p>
       </div>
       <div class="terms-grid">
         <div class="term-card">
           <h3>💳 Payment</h3>
           <ul>
-            <li>PayPal, Ko-fi, or Gcash is currently the accepted payment methods.</li>
+            <li>PayPal is the only accepted payment method.</li>
             <li>Partial payment (50% or less of the total) is available only for full illustrations priced above $50, due once the draft is approved.</li>
           </ul>
         </div>
@@ -506,60 +537,7 @@
     </div>
   </section>
 
-  <section id="commission">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="pixel-tag">COMMISSION</span>
-        <h2>Request a commission</h2>
-        <p>Fill this out with as much detail as you can. Submitting opens a pre-filled email in your mail app, ready to send.</p>
-      </div>
-      <form class="commission-form" id="commission-form">
-        <div class="field">
-          <label for="name">Your name</label>
-          <input id="name" name="name" type="text" required>
-        </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required>
-        </div>
-        <div class="field">
-          <label for="handle">Discord / Twitch handle (optional)</label>
-          <input id="handle" name="handle" type="text" placeholder="so I can reach you there too">
-        </div>
-        <div class="field">
-          <label for="count">Number of emotes</label>
-          <input id="count" name="count" type="text" placeholder="e.g. 3">
-        </div>
-        <div class="field">
-          <label for="turnaround">Turnaround</label>
-          <select id="turnaround" name="turnaround">
-            <option>Standard — 2 weeks</option>
-            <option>Rush — under 1 week (+$10)</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="budget">Estimated budget</label>
-          <input id="budget" name="budget" type="text" placeholder="based on $25/emote + extras">
-        </div>
-        <div class="field full">
-          <label for="details">Describe your character &amp; emotes</label>
-          <textarea id="details" name="details" placeholder="Character look, expressions/poses wanted, style notes, mood"></textarea>
-        </div>
-        <div class="field full">
-          <label for="refs">Reference links</label>
-          <input id="refs" name="refs" type="text" placeholder="Character sheets, mood boards, existing emotes, etc.">
-        </div>
-        <div class="field full checkbox">
-          <input id="agree" name="agree" type="checkbox" required>
-          <label for="agree">I've read and agree to the <a href="#terms">terms &amp; conditions</a>, including the PayPal-only payment and refund policy.</label>
-        </div>
-        <div class="form-foot">
-          <span class="hint">This form has no server behind it yet — sending opens a pre-filled email instead.</span>
-          <button type="submit" class="btn btn-primary">Send request</button>
-        </div>
-      </form>
-    </div>
-  </section>
+
 </main>
 
 <footer class="site">
@@ -577,30 +555,18 @@
   </div>
 </footer>
 
+
 <script>
-  document.getElementById('commission-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const f = new FormData(this);
-    const subject = encodeURIComponent(`Emote commission request — ${f.get('count') || '?'} emote(s)`);
-    const body = encodeURIComponent(
-`Name: ${f.get('name')}
-Email: ${f.get('email')}
-Discord/Twitch: ${f.get('handle') || 'n/a'}
-Number of emotes: ${f.get('count') || 'n/a'}
-Turnaround: ${f.get('turnaround')}
-Estimated budget: ${f.get('budget') || 'n/a'}
-
-Details:
-${f.get('details') || ''}
-
-References:
-${f.get('refs') || ''}
-
-Agreed to terms & conditions: ${f.get('agree') ? 'Yes' : 'No'}`
-    );
-    window.location.href = `mailto:Inlovewiththeloneliness@gmail.com?subject=${subject}&body=${body}`;
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('#gallery-grid .piece-tile').forEach(tile => {
+        tile.style.display = (filter === 'all' || tile.dataset.category === filter) ? '' : 'none';
+      });
+    });
   });
 </script>
-
 </body>
 </html>
